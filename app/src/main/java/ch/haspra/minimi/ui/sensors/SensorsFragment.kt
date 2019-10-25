@@ -6,24 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import ch.haspra.minimi.R
 
 class SensorsFragment : Fragment() {
-
-    private lateinit var sensorsViewModel: SensorsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        sensorsViewModel =
-            ViewModelProviders.of(this).get(SensorsViewModel::class.java)
+        val sensorsViewModel by viewModels<SensorsViewModel>()
+
         val root = inflater.inflate(R.layout.fragment_sensors, container, false)
-        val textView: TextView = root.findViewById(R.id.text_sensors)
-        sensorsViewModel.text.observe(this, Observer {
+        val textView: TextView = root.findViewById(R.id.sensors_title)
+        sensorsViewModel.title.observe(this, Observer {
             textView.text = it
         })
         return root
