@@ -1,12 +1,13 @@
 package ch.haspra.minimi.ui.sensors
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import ch.haspra.minimi.repos.SensorsRepository
 
-class SensorsViewModel : ViewModel() {
-    private val sensorsRepository: SensorsRepository = SensorsRepository()
+class SensorsViewModel(application: Application) : AndroidViewModel(application) {
+    private val sensorsRepository: SensorsRepository = SensorsRepository(getApplication())
 
     private val _title = MutableLiveData<String>().apply {
         value =
