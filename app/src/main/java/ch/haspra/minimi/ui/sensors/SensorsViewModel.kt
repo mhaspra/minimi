@@ -10,8 +10,14 @@ class SensorsViewModel(application: Application) : AndroidViewModel(application)
     private val sensorsRepository: SensorsRepository = SensorsRepository(getApplication())
 
     private val _title = MutableLiveData<String>().apply {
-        value =
-            sensorsRepository.getSensors().value?.size.toString()//"There are x sensors available"
+        val numOfSensors = sensorsRepository.getSensors().value?.size
+        value = "There are $numOfSensors sensors available"
     }
+
+    private val _sensors = MutableLiveData<List<String>>().apply {
+        value = sensorsRepository.getSensors().value?.map { sensor -> sensor.name }
+    }
+
     val title: LiveData<String> = _title
+    val sensors: LiveData<List<String>> = _sensors
 }
