@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import ch.haspra.minimi.R
+import com.google.android.material.snackbar.Snackbar
 
 
 class SensorsFragment : Fragment() {
@@ -32,6 +33,12 @@ class SensorsFragment : Fragment() {
         sensorsViewModel.sensors.observe(this, Observer {
             listView.adapter = ArrayAdapter(root.context, android.R.layout.simple_list_item_1, it)
         })
+
+        listView.setOnItemClickListener { _, _, position, _ ->
+            val snackbar = Snackbar.make(this.view!!, "$position", Snackbar.LENGTH_LONG)
+            snackbar.show()
+
+        }
 
         return root
     }
