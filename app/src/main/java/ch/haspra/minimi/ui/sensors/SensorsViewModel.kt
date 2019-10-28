@@ -1,6 +1,7 @@
 package ch.haspra.minimi.ui.sensors
 
 import android.app.Application
+import android.hardware.Sensor
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,10 +15,10 @@ class SensorsViewModel(application: Application) : AndroidViewModel(application)
         value = "There are $numOfSensors sensors available"
     }
 
-    private val _sensors = MutableLiveData<List<String>>().apply {
-        value = sensorsRepository.getSensors().value?.map { sensor -> sensor.name }
+    private val _sensors = MutableLiveData<List<Sensor>>().apply {
+        value = sensorsRepository.getSensors().value
     }
 
     val title: LiveData<String> = _title
-    val sensors: LiveData<List<String>> = _sensors
+    val sensors: LiveData<List<Sensor>> = _sensors
 }
