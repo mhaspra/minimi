@@ -13,7 +13,7 @@ class SensorsRepository(private val context: Context) {
         val sensorManager = context.getSystemService(SENSOR_SERVICE) as SensorManager
 
         val data = MutableLiveData<List<Sensor>>()
-        data.value = sensorManager.getSensorList(TYPE_ALL)
+        data.value = sensorManager.getSensorList(TYPE_ALL).sortedBy { sensor -> sensor.name }
         return data
     }
 }
