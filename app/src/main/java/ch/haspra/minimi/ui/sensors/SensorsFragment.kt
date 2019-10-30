@@ -9,12 +9,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ListView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import ch.haspra.minimi.R
+import ch.haspra.minimi.ui.sensors.environment.EnvironmentSensorsFragment
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -43,7 +46,14 @@ class SensorsFragment : Fragment(), SensorEventListener {
 
         listView.setOnItemClickListener { _, _, position, _ ->
             val sensor = sensorsViewModel.sensors.value?.get(position)
-            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
+            if (SensorsUtil.isEnvironmentSensor(sensor!!)) {
+                val parent = (root as ConstraintLayout).parent as FrameLayout
+
+                fragmentManager!!.beginTransaction()
+                    .replace((view!!.parent as ViewGroup).id, EnvironmentSensorsFragment()).commit()
+            } else {
+                sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
+            }
         }
 
         return root
