@@ -1,7 +1,6 @@
 package ch.haspra.minimi.ui.sensors
 
 import android.content.Context
-import android.hardware.Sensor
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +8,12 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import ch.haspra.minimi.R
+import ch.haspra.minimi.domain.MiSensor
+import ch.haspra.minimi.domain.SensorType.*
 
 class SensorAdapter(
     context: Context,
-    private val sensors: List<Sensor>
+    private val sensors: List<MiSensor>
 ) : BaseAdapter() {
     private val inflater: LayoutInflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -35,13 +36,13 @@ class SensorAdapter(
         val titleTextView = rowView.findViewById(R.id.sensor_item_title) as TextView
         val descriptionTextView = rowView.findViewById(R.id.sensor_item_description) as TextView
 
-        val sensor = getItem(position) as Sensor
+        val sensor = getItem(position) as MiSensor
 
-        if (SensorsUtil.isEnvironmentSensor(sensor)) {
+        if (sensor.type == ENVIRONMENT) {
             iconImageView.setImageResource(android.R.drawable.ic_menu_info_details)
-        } else if (SensorsUtil.isPositionSensor(sensor)) {
+        } else if (sensor.type == POSITION) {
             iconImageView.setImageResource(android.R.drawable.ic_menu_mylocation)
-        } else if (SensorsUtil.isMotionSensor(sensor)) {
+        } else if (sensor.type == MOTION) {
             iconImageView.setImageResource(android.R.drawable.ic_menu_rotate)
         }
         titleTextView.text = "${sensor.name} (Type: ${sensor.type})"
