@@ -9,10 +9,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.ListView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -48,10 +46,9 @@ class SensorsFragment : Fragment(), SensorEventListener {
         listView.setOnItemClickListener { _, _, position, _ ->
             val sensor = sensorsViewModel.sensors.value?.get(position)
             if (sensor!!.type == ENVIRONMENT) {
-                val parent = (root as ConstraintLayout).parent as FrameLayout
 
                 fragmentManager!!.beginTransaction()
-                    .replace((view!!.parent as ViewGroup).id, EnvironmentSensorsFragment()).commit()
+                    .replace(container!!.id, EnvironmentSensorsFragment()).commit()
             } else {
                 sensorManager.registerListener(
                     this,
