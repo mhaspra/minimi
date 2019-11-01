@@ -48,7 +48,10 @@ class SensorsFragment : Fragment(), SensorEventListener {
             if (sensor!!.type == ENVIRONMENT) {
 
                 fragmentManager!!.beginTransaction()
-                    .replace(container!!.id, EnvironmentSensorsFragment()).commit()
+                    .replace(container!!.id, EnvironmentSensorsFragment())
+                    .addToBackStack(null)
+                    .commit()
+
             } else {
                 sensorManager.registerListener(
                     this,
