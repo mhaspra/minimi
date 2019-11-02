@@ -2,6 +2,10 @@ package ch.haspra.minimi.domain.sensor
 
 import android.hardware.Sensor
 import android.hardware.Sensor.*
+import ch.haspra.minimi.domain.sensor.environment.AmbientHumidity
+import ch.haspra.minimi.domain.sensor.environment.AmbientTemparatureSensor
+import ch.haspra.minimi.domain.sensor.environment.Barometer
+import ch.haspra.minimi.domain.sensor.environment.LightSensor
 
 class SensorFactory {
     companion object {
@@ -12,7 +16,9 @@ class SensorFactory {
                 TYPE_AMBIENT_TEMPERATURE -> AmbientTemparatureSensor(
                     sensor
                 )
-                TYPE_RELATIVE_HUMIDITY -> AmbientHumidity(sensor)
+                TYPE_RELATIVE_HUMIDITY -> AmbientHumidity(
+                    sensor
+                )
                 else -> SensorEntity(sensor)
             }
         }
