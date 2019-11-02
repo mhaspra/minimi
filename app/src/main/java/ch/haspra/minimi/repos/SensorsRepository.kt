@@ -7,14 +7,26 @@ import android.hardware.SensorManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ch.haspra.minimi.domain.MiSensor
+import ch.haspra.minimi.domain.SensorType
+import ch.haspra.minimi.domain.SensorType.ENVIRONMENT
 
-class SensorsRepository(private val context: Context) {
+class SensorsRepository(context: Context) {
+    private val sensorManager = context.getSystemService(SENSOR_SERVICE) as SensorManager
+
     fun getSensors(): LiveData<List<MiSensor>> {
-        val sensorManager = context.getSystemService(SENSOR_SERVICE) as SensorManager
-
         val data = MutableLiveData<List<MiSensor>>()
-        data.value = sensorManager.getSensorList(TYPE_ALL).map { sensor -> MiSensor(sensor) }
-            .sortedBy { sensor -> sensor.name }
+        data.value = getSensorsFromSensorManager()
         return data
     }
+
+
+    fun getSensors(type: SensorType): LiveData<List<MiSensor>> {
+        val data = MutableLiveData<List<MiSensor>>()
+        data.value = getSensorsFromSensorManager().filter { it.type == ENVIRONMENT }
+        return data
+    }
+
+    private fun getSensorsFromSensorManager() =
+        sensorManager.getSensorList(TYPE_ALL).map { sensor -> MiSensor(sensor) }
+            .sortedBy { sensor -> sensor.name }
 }

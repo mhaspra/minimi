@@ -9,11 +9,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import ch.haspra.minimi.R
+
 
 class EnvironmentSensorsFragment : Fragment(), SensorEventListener {
     private lateinit var sensorManager: SensorManager
@@ -32,6 +34,12 @@ class EnvironmentSensorsFragment : Fragment(), SensorEventListener {
         sensorsViewModel.title.observe(this, Observer {
             textView.text = it
         })
+
+        val gridView = root.findViewById(R.id.environment_sensors_grid) as GridView
+        sensorsViewModel.sensors.observe(this, Observer {
+            gridView.adapter = LiveSensorAdapter(root.context, it)
+        })
+
 
         return root
     }
