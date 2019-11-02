@@ -16,10 +16,6 @@ open class SensorEntity(val hardwareSensor: Sensor) {
     open val type: SensorType
         get() {
             return when (hardwareSensor.type) {
-                Sensor.TYPE_AMBIENT_TEMPERATURE -> ENVIRONMENT
-                Sensor.TYPE_LIGHT -> ENVIRONMENT
-                Sensor.TYPE_PRESSURE -> ENVIRONMENT
-                Sensor.TYPE_RELATIVE_HUMIDITY -> ENVIRONMENT
                 Sensor.TYPE_GAME_ROTATION_VECTOR -> POSITION
                 Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR -> POSITION
                 Sensor.TYPE_MAGNETIC_FIELD -> POSITION
