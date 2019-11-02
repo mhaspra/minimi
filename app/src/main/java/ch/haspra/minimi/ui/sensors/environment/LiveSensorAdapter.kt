@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import ch.haspra.minimi.R
 import ch.haspra.minimi.domain.ObservableSensor
 
 
@@ -29,13 +30,28 @@ class LiveSensorAdapter(
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val dummyTextView = TextView(context)
+        val sensorView: View
 
-        sensors[position].values.observeForever {
+        if (convertView == null) {
+            val layoutInflater = LayoutInflater.from(context)
+            sensorView = layoutInflater.inflate(R.layout.grid_item_sensor, null)
+        } else {
+            sensorView = convertView
+        }
+
+        val sensor = sensors[position]
+
+        val nameTextView = sensorView.findViewById(R.id.grid_sensor_name) as TextView
+        val valueTextView = sensorView.findViewById(R.id.grid_sensor_value) as TextView
+
+        nameTextView.text = sensor.sensor.name
+
+        sensor.values.observeForever {
             if (it.isNotEmpty()) {
-                dummyTextView.text = it[0].toString()
+                valueTextView.text = it[0].toString()
             }
         }
-        return dummyTextView
+
+        return sensorView
     }
 }
