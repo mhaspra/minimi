@@ -15,7 +15,7 @@ import ch.haspra.minimi.R
 import ch.haspra.minimi.ui.sensors.LiveSensorAdapter
 
 
-class EnvironmentSensorsFragment : Fragment() {
+class PositionSensorsFragment : Fragment() {
     private lateinit var sensorManager: SensorManager
 
     override fun onCreateView(
@@ -25,7 +25,7 @@ class EnvironmentSensorsFragment : Fragment() {
     ): View? {
         sensorManager = context?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
-        val sensorsViewModel by viewModels<EnvironmentSensorsViewModel>()
+        val sensorsViewModel by viewModels<PositionSensorsViewModel>()
 
         val root = inflater.inflate(R.layout.fragment_environment_sensors, container, false)
         val textView: TextView = root.findViewById(R.id.environment_sensors_title)

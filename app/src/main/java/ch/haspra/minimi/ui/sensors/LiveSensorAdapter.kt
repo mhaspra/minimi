@@ -1,4 +1,4 @@
-package ch.haspra.minimi.ui.sensors.environment
+package ch.haspra.minimi.ui.sensors
 
 import android.content.Context
 import android.view.LayoutInflater
