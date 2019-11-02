@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 
 class EnvironmentSensorsViewModel : ViewModel() {
     private val _title = MutableLiveData<String>().apply {
-        value = "Environement Sensors"
+        value = "Environment Sensors"
     }
     val title: LiveData<String> = _title
 }
