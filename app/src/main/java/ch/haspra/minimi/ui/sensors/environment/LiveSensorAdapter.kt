@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import ch.haspra.minimi.domain.MiSensor
+import ch.haspra.minimi.domain.ObservableSensor
 
 
 class LiveSensorAdapter(
     private val context: Context,
-    private val sensors: List<MiSensor>
+    private val sensors: List<ObservableSensor>
 ) : BaseAdapter() {
     private val inflater: LayoutInflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -30,7 +30,12 @@ class LiveSensorAdapter(
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val dummyTextView = TextView(context)
-        dummyTextView.text = sensors[position].name
+
+        sensors[position].values.observeForever {
+            if (it.isNotEmpty()) {
+                dummyTextView.text = it[0].toString()
+            }
+        }
         return dummyTextView
     }
 }

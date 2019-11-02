@@ -1,9 +1,6 @@
 package ch.haspra.minimi.ui.sensors.environment
 
 import android.content.Context
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,7 +14,7 @@ import androidx.lifecycle.Observer
 import ch.haspra.minimi.R
 
 
-class EnvironmentSensorsFragment : Fragment(), SensorEventListener {
+class EnvironmentSensorsFragment : Fragment() {
     private lateinit var sensorManager: SensorManager
 
     override fun onCreateView(
@@ -43,13 +40,4 @@ class EnvironmentSensorsFragment : Fragment(), SensorEventListener {
 
         return root
     }
-
-    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onSensorChanged(p0: SensorEvent?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
 }
