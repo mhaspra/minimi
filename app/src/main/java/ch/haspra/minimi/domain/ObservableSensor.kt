@@ -5,7 +5,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import androidx.lifecycle.MutableLiveData
 
-class ObservableSensor(val sensor: MiSensor) : SensorEventListener {
+class ObservableSensor(val sensor: SensorEntity) : SensorEventListener {
     var values: MutableLiveData<FloatArray> = MutableLiveData(FloatArray(0))
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {

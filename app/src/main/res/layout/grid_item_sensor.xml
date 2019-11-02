@@ -20,6 +20,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="start"
+        android:paddingLeft="8dp"
+        android:paddingTop="4dp"
+        android:paddingRight="8dp"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/grid_sensor_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:paddingLeft="8dp"
+        android:paddingTop="4dp"
+        android:paddingRight="8dp"
         android:textSize="12sp" />
 
 </LinearLayout>

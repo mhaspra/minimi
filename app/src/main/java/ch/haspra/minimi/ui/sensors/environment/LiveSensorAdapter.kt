@@ -43,6 +43,7 @@ class LiveSensorAdapter(
 
         val nameTextView = sensorView.findViewById(R.id.grid_sensor_name) as TextView
         val valueTextView = sensorView.findViewById(R.id.grid_sensor_value) as TextView
+        val unitTextView = sensorView.findViewById(R.id.grid_sensor_unit) as TextView
 
         nameTextView.text = sensor.sensor.name
 
@@ -51,6 +52,8 @@ class LiveSensorAdapter(
                 valueTextView.text = it[0].toString()
             }
         }
+
+        unitTextView.text = sensor.sensor.unit
 
         return sensorView
     }

@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import ch.haspra.minimi.R
-import ch.haspra.minimi.domain.SensorType.ENVIRONMENT
+import ch.haspra.minimi.domain.SensorEntity.SensorType.ENVIRONMENT
 import ch.haspra.minimi.ui.sensors.environment.EnvironmentSensorsFragment
 import com.google.android.material.snackbar.Snackbar
 
@@ -55,7 +55,7 @@ class SensorsFragment : Fragment(), SensorEventListener {
             } else {
                 sensorManager.registerListener(
                     this,
-                    sensor.sensor,
+                    sensor.hardwareSensor,
                     SensorManager.SENSOR_DELAY_NORMAL
                 )
             }

@@ -1,19 +1,21 @@
 package ch.haspra.minimi.domain
 
 import android.hardware.Sensor
-import ch.haspra.minimi.domain.SensorType.*
+import ch.haspra.minimi.domain.SensorEntity.SensorType.*
 
-class MiSensor(val sensor: Sensor) {
+open class SensorEntity(val hardwareSensor: Sensor) {
 
     val name: String
-        get() = sensor.name
+        get() = hardwareSensor.name
 
     val vendor: String
-        get() = sensor.vendor
+        get() = hardwareSensor.vendor
 
-    val type: SensorType
+    open val unit: String = ""
+
+    open val type: SensorType
         get() {
-            return when (sensor.type) {
+            return when (hardwareSensor.type) {
                 Sensor.TYPE_AMBIENT_TEMPERATURE -> ENVIRONMENT
                 Sensor.TYPE_LIGHT -> ENVIRONMENT
                 Sensor.TYPE_PRESSURE -> ENVIRONMENT
@@ -37,8 +39,8 @@ class MiSensor(val sensor: Sensor) {
                 else -> UNKNOWN
             }
         }
-}
 
-enum class SensorType {
-    ENVIRONMENT, MOTION, POSITION, UNKNOWN
+    enum class SensorType {
+        ENVIRONMENT, MOTION, POSITION, UNKNOWN
+    }
 }
