@@ -1,7 +1,7 @@
-package ch.haspra.minimi.domain
+package ch.haspra.minimi.domain.sensor
 
 import android.hardware.Sensor
-import ch.haspra.minimi.domain.SensorEntity.SensorType.*
+import ch.haspra.minimi.domain.sensor.SensorEntity.SensorType.*
 
 open class SensorEntity(val hardwareSensor: Sensor) {
 

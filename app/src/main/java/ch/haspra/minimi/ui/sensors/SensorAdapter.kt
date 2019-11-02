@@ -8,8 +8,8 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import ch.haspra.minimi.R
-import ch.haspra.minimi.domain.SensorEntity
-import ch.haspra.minimi.domain.SensorEntity.SensorType.ENVIRONMENT
+import ch.haspra.minimi.domain.sensor.SensorEntity
+import ch.haspra.minimi.domain.sensor.SensorEntity.SensorType.ENVIRONMENT
 
 class SensorAdapter(
     context: Context,

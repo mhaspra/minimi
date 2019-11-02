@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import ch.haspra.minimi.R
-import ch.haspra.minimi.domain.ObservableSensor
+import ch.haspra.minimi.domain.sensor.ObservableSensor
 
 
 class LiveSensorAdapter(

@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ch.haspra.minimi.domain.SensorEntity
+import ch.haspra.minimi.domain.sensor.SensorEntity
 import ch.haspra.minimi.repos.SensorsRepository
 
 class SensorsViewModel(application: Application) : AndroidViewModel(application) {

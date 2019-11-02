@@ -6,10 +6,10 @@ import android.hardware.Sensor.TYPE_ALL
 import android.hardware.SensorManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ch.haspra.minimi.domain.ObservableSensor
-import ch.haspra.minimi.domain.SensorEntity
-import ch.haspra.minimi.domain.SensorEntity.SensorType
-import ch.haspra.minimi.domain.SensorFactory
+import ch.haspra.minimi.domain.sensor.ObservableSensor
+import ch.haspra.minimi.domain.sensor.SensorEntity
+import ch.haspra.minimi.domain.sensor.SensorEntity.SensorType
+import ch.haspra.minimi.domain.sensor.SensorFactory
 
 class SensorsRepository(context: Context) {
     private val sensorManager = context.getSystemService(SENSOR_SERVICE) as SensorManager
