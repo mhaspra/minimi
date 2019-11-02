@@ -9,9 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:paddingLeft="8dp"
         android:paddingTop="4dp"
-        android:paddingRight="8dp"
         android:textSize="12sp"
         android:textStyle="bold" />
 
@@ -22,22 +20,22 @@
 
         <TextView
             android:id="@+id/grid_sensor_value"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:gravity="start"
-            android:paddingLeft="8dp"
+            android:gravity="end"
             android:paddingTop="4dp"
-            android:paddingRight="8dp"
+            android:paddingEnd="4dp"
             android:textSize="12sp" />
 
         <TextView
             android:id="@+id/grid_sensor_unit"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:paddingLeft="8dp"
+            android:paddingStart="4dp"
             android:paddingTop="4dp"
-            android:paddingRight="8dp"
             android:textSize="12sp" />
     </LinearLayout>
 </LinearLayout>
