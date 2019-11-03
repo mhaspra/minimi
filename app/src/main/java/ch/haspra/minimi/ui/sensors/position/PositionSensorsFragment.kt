@@ -27,13 +27,13 @@ class PositionSensorsFragment : Fragment() {
 
         val sensorsViewModel by viewModels<PositionSensorsViewModel>()
 
-        val root = inflater.inflate(R.layout.fragment_environment_sensors, container, false)
-        val textView: TextView = root.findViewById(R.id.environment_sensors_title)
+        val root = inflater.inflate(R.layout.fragment_sensors_grid, container, false)
+        val textView: TextView = root.findViewById(R.id.sensors_grid_title)
         sensorsViewModel.title.observe(this, Observer {
             textView.text = it
         })
 
-        val gridView = root.findViewById(R.id.environment_sensors_grid) as GridView
+        val gridView = root.findViewById(R.id.sensors_grid_view) as GridView
         sensorsViewModel.sensors.observe(this, Observer {
             gridView.adapter = LiveSensorAdapter(root.context, it)
         })
