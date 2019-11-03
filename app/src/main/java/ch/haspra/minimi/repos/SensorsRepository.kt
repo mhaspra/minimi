@@ -25,13 +25,6 @@ class SensorsRepository(context: Context) {
         val sensors = getSensorsFromSensorManager()
             .filter { it.type == type }
 
-        sensors.forEach {
-            sensorManager.registerListener(
-                it, it.hardwareSensor,
-                SensorManager.SENSOR_DELAY_NORMAL
-            )
-        }
-
         data.value = sensors
         return data
     }

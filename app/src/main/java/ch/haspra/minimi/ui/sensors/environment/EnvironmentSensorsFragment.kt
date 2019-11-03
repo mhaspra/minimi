@@ -38,7 +38,21 @@ class EnvironmentSensorsFragment : Fragment() {
             gridView.adapter = LiveSensorAdapter(root.context, it)
         })
 
+        sensorsViewModel.sensors.value?.forEach {
+            sensorManager.registerListener(it, it.hardwareSensor, SensorManager.SENSOR_DELAY_NORMAL)
+        }
 
         return root
+    }
+
+    override fun onPause() {
+        super.onPause()
+        val sensorsViewModel by viewModels<EnvironmentSensorsViewModel>()
+        sensorsViewModel.sensors.value?.forEach {
+            sensorManager.unregisterListener(
+                it,
+                it.hardwareSensor
+            )
+        }
     }
 }

@@ -35,7 +35,7 @@ class LiveSensorAdapter(
 
         if (convertView == null) {
             val layoutInflater = LayoutInflater.from(context)
-            sensorView = layoutInflater.inflate(R.layout.grid_item_sensor, null)
+            sensorView = layoutInflater.inflate(R.layout.grid_item_sensor, parent, false)
         } else {
             sensorView = convertView
         }
