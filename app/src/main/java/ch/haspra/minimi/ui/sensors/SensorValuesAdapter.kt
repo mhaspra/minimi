@@ -5,25 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ListView
 import android.widget.TextView
 import ch.haspra.minimi.R
-import ch.haspra.minimi.domain.sensor.SensorEntity
+import ch.haspra.minimi.domain.sensor.SensorValue
 
-
-class LiveSensorAdapter(
+class SensorValuesAdapter(
     private val context: Context,
-    private val sensors: List<SensorEntity>
+    private val values: List<SensorValue>
 ) : BaseAdapter() {
     private val inflater: LayoutInflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getCount(): Int {
-        return sensors.size
+        return values.size
     }
 
     override fun getItem(position: Int): Any {
-        return sensors[position]
+        return values[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -31,29 +29,23 @@ class LiveSensorAdapter(
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val sensorView: View
+        val valueView: View
 
         if (convertView == null) {
             val layoutInflater = LayoutInflater.from(context)
-            sensorView = layoutInflater.inflate(R.layout.grid_item_sensor, null)
+            valueView = layoutInflater.inflate(R.layout.sensor_value, null)
         } else {
-            sensorView = convertView
+            valueView = convertView
         }
 
-        val sensor = sensors[position]
+        val value = values[position]
 
-        val nameTextView = sensorView.findViewById(R.id.grid_sensor_name) as TextView
+        val valueTextView = valueView.findViewById(R.id.sensor_value_value) as TextView
+        val unitTextView = valueView.findViewById(R.id.sensor_value_unit) as TextView
 
+        valueTextView.text = value.value.toString()
+        unitTextView.text = value.unit
 
-        nameTextView.text = sensor.name
-
-        sensor.values.observeForever {
-            if (it.isNotEmpty()) {
-                val listView = sensorView.findViewById(R.id.sensor_values_list) as ListView
-                listView.adapter = SensorValuesAdapter(context, it)
-            }
-        }
-
-        return sensorView
+        return valueView
     }
 }

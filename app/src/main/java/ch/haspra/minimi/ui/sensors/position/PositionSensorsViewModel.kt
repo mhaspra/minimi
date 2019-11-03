@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ch.haspra.minimi.domain.sensor.ObservableSensor
+import ch.haspra.minimi.domain.sensor.SensorEntity
 import ch.haspra.minimi.domain.sensor.SensorEntity.SensorType.POSITION
 import ch.haspra.minimi.repos.SensorsRepository
 
@@ -14,10 +14,10 @@ class PositionSensorsViewModel(application: Application) : AndroidViewModel(appl
     private val _title = MutableLiveData<String>().apply {
         value = "Position Sensors"
     }
-    private val _sensors = MutableLiveData<List<ObservableSensor>>().apply {
+    private val _sensors = MutableLiveData<List<SensorEntity>>().apply {
         value = sensorsRepository.getSensors(POSITION).value
     }
 
     val title: LiveData<String> = _title
-    val sensors: LiveData<List<ObservableSensor>> = _sensors
+    val sensors: LiveData<List<SensorEntity>> = _sensors
 }

@@ -6,7 +6,6 @@ import android.hardware.Sensor.TYPE_ALL
 import android.hardware.SensorManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ch.haspra.minimi.domain.sensor.ObservableSensor
 import ch.haspra.minimi.domain.sensor.SensorEntity
 import ch.haspra.minimi.domain.sensor.SensorEntity.SensorType
 import ch.haspra.minimi.domain.sensor.SensorFactory
@@ -21,15 +20,14 @@ class SensorsRepository(context: Context) {
     }
 
 
-    fun getSensors(type: SensorType): LiveData<List<ObservableSensor>> {
-        val data = MutableLiveData<List<ObservableSensor>>()
+    fun getSensors(type: SensorType): LiveData<List<SensorEntity>> {
+        val data = MutableLiveData<List<SensorEntity>>()
         val sensors = getSensorsFromSensorManager()
             .filter { it.type == type }
-            .map { ObservableSensor(it) }
 
         sensors.forEach {
             sensorManager.registerListener(
-                it, it.sensor.hardwareSensor,
+                it, it.hardwareSensor,
                 SensorManager.SENSOR_DELAY_NORMAL
             )
         }
