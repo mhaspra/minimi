@@ -39,7 +39,7 @@ class EnvironmentSensorsFragment : Fragment() {
         })
 
         sensorsViewModel.sensors.value?.forEach {
-            sensorManager.registerListener(it, it.hardwareSensor, SensorManager.SENSOR_DELAY_NORMAL)
+            it.register(sensorManager)
         }
 
         return root
@@ -49,10 +49,7 @@ class EnvironmentSensorsFragment : Fragment() {
         super.onPause()
         val sensorsViewModel by viewModels<EnvironmentSensorsViewModel>()
         sensorsViewModel.sensors.value?.forEach {
-            sensorManager.unregisterListener(
-                it,
-                it.hardwareSensor
-            )
+            it.unregister(sensorManager)
         }
     }
 }

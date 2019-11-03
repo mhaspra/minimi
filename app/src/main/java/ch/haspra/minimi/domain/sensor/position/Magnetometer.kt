@@ -16,7 +16,7 @@ class Magnetometer(hardwareSensor: Sensor) : SensorEntity(hardwareSensor) {
         sensorValues.add(SensorValue(getValueAt(sensorEvent, 1), unit, "y"))
         sensorValues.add(SensorValue(getValueAt(sensorEvent, 2), unit, "z"))
 
-        values.value = sensorValues
+        values.postValue(sensorValues)
     }
 
     private fun getValueAt(event: SensorEvent?, i: Int) = event?.values?.getOrNull(i)

@@ -3,10 +3,14 @@ package ch.haspra.minimi.domain.sensor
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
+import android.hardware.SensorManager
+import android.os.Handler
+import android.os.HandlerThread
 import androidx.lifecycle.MutableLiveData
 import ch.haspra.minimi.domain.sensor.SensorEntity.SensorType.*
 
 open class SensorEntity(val hardwareSensor: Sensor) : SensorEventListener {
+    private var handlerThread: HandlerThread? = null
 
     val name: String
         get() = hardwareSensor.name
@@ -18,13 +22,31 @@ open class SensorEntity(val hardwareSensor: Sensor) : SensorEventListener {
 
     var values: MutableLiveData<List<SensorValue>> = MutableLiveData()
 
+    fun register(sensorManager: SensorManager) {
+        handlerThread = HandlerThread(name)
+        handlerThread?.start()
+        val handler = Handler(this.handlerThread?.looper)
+        sensorManager.registerListener(
+            this,
+            hardwareSensor,
+            SensorManager.SENSOR_DELAY_NORMAL,
+            handler
+        )
+    }
+
+    fun unregister(sensorManager: SensorManager) {
+        sensorManager.unregisterListener(this)
+        if (handlerThread?.isAlive == true)
+            handlerThread?.quitSafely()
+    }
+
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
         //don't know what to do yet
     }
 
     override fun onSensorChanged(sensorEvent: SensorEvent?) {
-        values.value = sensorEvent?.values?.map { SensorValue(it, unit, "") }
+        values.postValue(sensorEvent?.values?.map { SensorValue(it, unit, "") })
     }
 
     open val type: SensorType
