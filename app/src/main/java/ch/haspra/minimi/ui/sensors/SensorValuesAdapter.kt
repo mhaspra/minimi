@@ -40,9 +40,11 @@ class SensorValuesAdapter(
 
         val value = values[position]
 
+        val descriptionTextView = valueView.findViewById(R.id.sensor_value_description) as TextView
         val valueTextView = valueView.findViewById(R.id.sensor_value_value) as TextView
         val unitTextView = valueView.findViewById(R.id.sensor_value_unit) as TextView
 
+        descriptionTextView.text = value.description
         valueTextView.text = value.value.toString()
         unitTextView.text = value.unit
 
