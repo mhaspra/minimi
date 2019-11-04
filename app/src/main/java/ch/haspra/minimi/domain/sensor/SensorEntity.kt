@@ -29,7 +29,7 @@ open class SensorEntity(val hardwareSensor: Sensor) : SensorEventListener {
         sensorManager.registerListener(
             this,
             hardwareSensor,
-            SensorManager.SENSOR_DELAY_NORMAL,
+            1_000_000,
             handler
         )
     }
