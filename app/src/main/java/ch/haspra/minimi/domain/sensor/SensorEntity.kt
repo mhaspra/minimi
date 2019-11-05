@@ -54,8 +54,6 @@ open class SensorEntity(val hardwareSensor: Sensor) : SensorEventListener {
             return when (hardwareSensor.type) {
                 Sensor.TYPE_GAME_ROTATION_VECTOR -> POSITION
                 Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR -> POSITION
-                Sensor.TYPE_MAGNETIC_FIELD -> POSITION
-                Sensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED -> POSITION
                 Sensor.TYPE_ORIENTATION -> POSITION
                 Sensor.TYPE_PROXIMITY -> POSITION
                 Sensor.TYPE_ACCELEROMETER -> MOTION
