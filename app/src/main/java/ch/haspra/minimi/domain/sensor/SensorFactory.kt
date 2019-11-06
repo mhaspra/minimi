@@ -6,6 +6,7 @@ import ch.haspra.minimi.domain.sensor.environment.AmbientHumidity
 import ch.haspra.minimi.domain.sensor.environment.AmbientTemparatureSensor
 import ch.haspra.minimi.domain.sensor.environment.Barometer
 import ch.haspra.minimi.domain.sensor.environment.LightSensor
+import ch.haspra.minimi.domain.sensor.position.GameRotationSensor
 import ch.haspra.minimi.domain.sensor.position.Magnetometer
 import ch.haspra.minimi.domain.sensor.position.MagnetometerUncalibrated
 
@@ -19,6 +20,7 @@ class SensorFactory {
                 TYPE_RELATIVE_HUMIDITY -> AmbientHumidity(sensor)
                 TYPE_MAGNETIC_FIELD -> Magnetometer(sensor)
                 TYPE_MAGNETIC_FIELD_UNCALIBRATED -> MagnetometerUncalibrated(sensor)
+                TYPE_GAME_ROTATION_VECTOR -> GameRotationSensor(sensor)
                 else -> SensorEntity(sensor)
             }
         }
