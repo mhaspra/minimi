@@ -29,7 +29,7 @@ open class SensorEntity(val hardwareSensor: Sensor) : SensorEventListener {
         sensorManager.registerListener(
             this,
             hardwareSensor,
-            1_000_000,
+            500_000,
             handler
         )
     }
@@ -52,7 +52,6 @@ open class SensorEntity(val hardwareSensor: Sensor) : SensorEventListener {
     open val type: SensorType
         get() {
             return when (hardwareSensor.type) {
-                Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR -> POSITION
                 Sensor.TYPE_ORIENTATION -> POSITION
                 Sensor.TYPE_PROXIMITY -> POSITION
                 Sensor.TYPE_ACCELEROMETER -> MOTION
