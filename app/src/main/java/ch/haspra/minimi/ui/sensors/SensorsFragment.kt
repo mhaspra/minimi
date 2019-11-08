@@ -15,10 +15,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import ch.haspra.minimi.R
-import ch.haspra.minimi.domain.sensor.SensorEntity.SensorType.ENVIRONMENT
-import ch.haspra.minimi.domain.sensor.SensorEntity.SensorType.POSITION
+import ch.haspra.minimi.domain.sensor.SensorEntity.SensorType.*
 import ch.haspra.minimi.ui.sensors.environment.EnvironmentSensorsFragment
 import ch.haspra.minimi.ui.sensors.environment.PositionSensorsFragment
+import ch.haspra.minimi.ui.sensors.motion.MotionSensorsFragment
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -58,6 +58,13 @@ class SensorsFragment : Fragment(), SensorEventListener {
 
                 fragmentManager!!.beginTransaction()
                     .replace(container!!.id, PositionSensorsFragment())
+                    .addToBackStack(null)
+                    .commit()
+
+            } else if (sensor!!.type == MOTION) {
+
+                fragmentManager!!.beginTransaction()
+                    .replace(container!!.id, MotionSensorsFragment())
                     .addToBackStack(null)
                     .commit()
 

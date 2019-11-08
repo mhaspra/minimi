@@ -1,4 +1,4 @@
-package ch.haspra.minimi.ui.sensors.environment
+package ch.haspra.minimi.ui.sensors.motion
 
 import android.content.Context
 import android.hardware.SensorManager
@@ -13,9 +13,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import ch.haspra.minimi.R
 import ch.haspra.minimi.ui.sensors.LiveSensorAdapter
+import ch.haspra.minimi.ui.sensors.environment.MotionSensorsViewModel
 
 
-class PositionSensorsFragment : Fragment() {
+class MotionSensorsFragment : Fragment() {
     private lateinit var sensorManager: SensorManager
 
     override fun onCreateView(
@@ -25,7 +26,7 @@ class PositionSensorsFragment : Fragment() {
     ): View? {
         sensorManager = context?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
-        val sensorsViewModel by viewModels<PositionSensorsViewModel>()
+        val sensorsViewModel by viewModels<MotionSensorsViewModel>()
 
         val root = inflater.inflate(R.layout.fragment_sensors_grid, container, false)
         val textView: TextView = root.findViewById(R.id.sensors_grid_title)
