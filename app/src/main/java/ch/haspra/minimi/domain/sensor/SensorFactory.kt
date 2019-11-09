@@ -7,6 +7,7 @@ import ch.haspra.minimi.domain.sensor.environment.AmbientTemparatureSensor
 import ch.haspra.minimi.domain.sensor.environment.Barometer
 import ch.haspra.minimi.domain.sensor.environment.LightSensor
 import ch.haspra.minimi.domain.sensor.motion.Accelerometer
+import ch.haspra.minimi.domain.sensor.motion.AccelerometerUncalibrated
 import ch.haspra.minimi.domain.sensor.position.*
 
 class SensorFactory {
@@ -23,6 +24,7 @@ class SensorFactory {
                 TYPE_GEOMAGNETIC_ROTATION_VECTOR -> GeomagneticRotationSensor(sensor)
                 TYPE_PROXIMITY -> ProximitySensor(sensor)
                 TYPE_ACCELEROMETER -> Accelerometer(sensor)
+                TYPE_ACCELEROMETER_UNCALIBRATED -> AccelerometerUncalibrated(sensor)
                 else -> SensorEntity(sensor)
             }
         }
