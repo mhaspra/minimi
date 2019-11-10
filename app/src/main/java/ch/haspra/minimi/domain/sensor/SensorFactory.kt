@@ -27,6 +27,7 @@ class SensorFactory {
                 TYPE_GRAVITY -> GravitySensor(sensor)
                 TYPE_GYROSCOPE -> Gyroscope(sensor)
                 TYPE_GYROSCOPE_UNCALIBRATED -> GyroscopeUncalibrated(sensor)
+                TYPE_LINEAR_ACCELERATION -> LinearAccelerationSensor(sensor)
                 else -> SensorEntity(sensor)
             }
         }
