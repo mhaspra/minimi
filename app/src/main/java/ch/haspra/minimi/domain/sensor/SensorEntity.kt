@@ -53,7 +53,6 @@ open class SensorEntity(val hardwareSensor: Sensor) : SensorEventListener {
         get() {
             return when (hardwareSensor.type) {
                 Sensor.TYPE_ORIENTATION -> POSITION
-                Sensor.TYPE_ROTATION_VECTOR -> MOTION
                 Sensor.TYPE_SIGNIFICANT_MOTION -> MOTION
                 Sensor.TYPE_STEP_COUNTER -> MOTION
                 Sensor.TYPE_STEP_DETECTOR -> MOTION
