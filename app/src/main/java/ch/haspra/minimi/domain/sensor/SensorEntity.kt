@@ -7,7 +7,8 @@ import android.hardware.SensorManager
 import android.os.Handler
 import android.os.HandlerThread
 import androidx.lifecycle.MutableLiveData
-import ch.haspra.minimi.domain.sensor.SensorEntity.SensorType.*
+import ch.haspra.minimi.domain.sensor.SensorEntity.SensorType.POSITION
+import ch.haspra.minimi.domain.sensor.SensorEntity.SensorType.UNKNOWN
 
 open class SensorEntity(val hardwareSensor: Sensor) : SensorEventListener {
     private var handlerThread: HandlerThread? = null
@@ -53,9 +54,6 @@ open class SensorEntity(val hardwareSensor: Sensor) : SensorEventListener {
         get() {
             return when (hardwareSensor.type) {
                 Sensor.TYPE_ORIENTATION -> POSITION
-                Sensor.TYPE_SIGNIFICANT_MOTION -> MOTION
-                Sensor.TYPE_STEP_COUNTER -> MOTION
-                Sensor.TYPE_STEP_DETECTOR -> MOTION
                 else -> UNKNOWN
             }
         }

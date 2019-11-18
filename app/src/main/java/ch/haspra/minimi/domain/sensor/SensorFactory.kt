@@ -29,6 +29,9 @@ class SensorFactory {
                 TYPE_GYROSCOPE_UNCALIBRATED -> GyroscopeUncalibrated(sensor)
                 TYPE_LINEAR_ACCELERATION -> LinearAccelerationSensor(sensor)
                 TYPE_ROTATION_VECTOR -> RotationVectorSensor(sensor)
+                TYPE_STEP_COUNTER -> StepCounter(sensor)
+                TYPE_SIGNIFICANT_MOTION -> SignificantMotionSensor(sensor)
+                TYPE_STEP_DETECTOR -> StepDetector(sensor)
                 else -> SensorEntity(sensor)
             }
         }
