@@ -10,5 +10,6 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_sensors">Sensors</string>
+    <string name="menu_tracking">Tracking</string>
     <string name="menu_send">Send</string>
 </resources>

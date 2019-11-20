@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.nav_home,
                 R.id.nav_sensors,
+                R.id.nav_tracking,
                 R.id.nav_send
             ), drawerLayout
         )
