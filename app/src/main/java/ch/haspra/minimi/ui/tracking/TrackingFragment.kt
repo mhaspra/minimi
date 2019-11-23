@@ -26,6 +26,11 @@ class TrackingFragment : Fragment() {
             textView.text = it
         })
 
+        val pressureView: TextView = root.findViewById(R.id.tracking_pressure_value)
+        sensorsViewModel.pressure.observe(this, Observer {
+            pressureView.text = it.value.toString()
+        })
+
         return root
     }
 }
