@@ -1,5 +1,6 @@
 package ch.haspra.minimi.usecases.tracking_information
 
+import ch.haspra.minimi.application.usecases.tracking_information.ShowTrackingInformation
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
