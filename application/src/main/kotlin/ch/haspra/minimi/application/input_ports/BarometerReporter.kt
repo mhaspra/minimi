@@ -1,4 +1,4 @@
-package ch.haspra.minimi.application.ports
+package ch.haspra.minimi.application.input_ports
 
 import ch.haspra.minimi.domain.Pressure
 
